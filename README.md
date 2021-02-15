@@ -9,18 +9,19 @@ CodeOp 1st project
 
 ### Database Prep
 - Access the MySQL interface in your terminal by running ```mysql -u root -p```
-- Create a new database called initialForm: ```create database initialForm```
+- Create a new database called bodyCultureBcn: ```create database bodyCultureBcn```
+- Create 2 tables
 - Add a .env file to the project folder of this repository containing the MySQL authentication information for MySQL user. For example:
 
 ```javascript
 DB_HOST=localhost
 DB_USER=root
-DB_NAME=initialForm
+DB_NAME=bodyCultureBcn
 DB_PASS=YOURPASSWORD
 ```
-- Run ```npm run``` migrate in the project folder of this repository, in a new terminal window. This will create two tables called 'clients' and 'updates' in your database.
+- Run ```npm run``` migrate in the project folder of this repository, in a new terminal window. This will create two tables called 'profiles' and 'updates' in your database.
 
-- Make sure you understand how both tables 'clients' and 'updates' are constructed. In your MySQL console, you can run use 'clients' or 'updates'; and then describe any of them; to see the structure of the students table.
+- Make sure you understand how both tables 'profiles' and 'updates' are constructed. In your MySQL console, you can run use 'profiles' or 'updates'; and then describe any of them; to see the structure of the students table.
 
 ### Development
 - Run ```npm start``` in project directory to start the Express server on port 5000
