@@ -19,7 +19,7 @@ DB_USER=root
 DB_NAME=bodyCultureBcn
 DB_PASS=YOURPASSWORD
 ```
-- Run ```npm run``` migrate in the project folder of this repository, in a new terminal window. This will create two tables called 'profiles' and 'updates' in your database.
+- Run ```npm run migrate``` in the project folder of this repository, in a new terminal window. This will create two tables called 'profiles' and 'updates' in your database.
 
 - Make sure you understand how both tables 'profiles' and 'updates' are constructed. In your MySQL console, you can run use 'profiles' or 'updates'; and then describe any of them; to see the structure of the students table.
 
