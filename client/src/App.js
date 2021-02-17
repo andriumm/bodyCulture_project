@@ -16,22 +16,22 @@ function App() {
 				<nav>
 					<ul>
 						<li>
-							<Link to="/>">Home</Link>
+							<Link to="/">Home</Link>
 						</li>
 						<li>
-							<Link to="/about>">¿Qué es BcB?</Link>
+							<Link to="/about">¿Qué es BcB?</Link>
 						</li>
 						<li>
-							<Link to="/content>">Contenido</Link>
+							<Link to="/content">Contenido</Link>
 						</li>
 						<li>
-							<Link to="/myarea>">Mis registros</Link>
+							<Link to="/myarea">Mis registros</Link>
 						</li>
 						<li>
-							<Link to="/dashboard>">Dashboard</Link>
+							<Link to="/dashboard">Dashboard</Link>
 						</li>
 						<li>
-							<Link to="/contact>">Contacto</Link>
+							<Link to="/contact">Contacto</Link>
 						</li>
 					</ul>
 				</nav>
