@@ -2,19 +2,19 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
-/* GET users listing. */
+// /* GET users listing. */
 router.get("/", function (req, res, next) {
 	res.send("respond with a resource");
 });
 
-// GET users list //CHECKED
+// // // GET users list //CHECKED
 router.get("/", function (req, res, next) {
 	db(`SELECT * FROM Profiles;`)
 		.then((results) => res.send(results.data))
 		.catch((err) => res.status(500).send(err));
 });
 
-//GET one user Profile //CHECKED
+// // //GET one user Profile //CHECKED
 router.get("/:id", function (req, res, next) {
 	const { id } = req.params;
 	db(`SELECT * FROM Profiles WHERE id=${id};`)
@@ -22,19 +22,17 @@ router.get("/:id", function (req, res, next) {
 		.catch((err) => res.status(500).send(err));
 });
 
-//GET one user update //CHECKED
+// GET the history updates of a user //CHECKED
 router.get("/:id", function (req, res, next) {
 	const { id } = req.params;
 	db(
-		`SELECT firstname, lastname, profile_id, updates.date, weight, arm, weist, leg, stressLevel, sleepHours, steps, dietCompliment, Feelings, trainingsSummary, picFront, picBack, picSide FROM Profiles INNER JOIN Updates ON Profiles.id=Updates.profile_id WHERE Profiles.id="${id}";`
+		`SELECT Profiles.firstname, Profiles.lastname, Updates.* FROM Updates INNER JOIN Profiles ON Profiles.id=Updates.profile_id WHERE Profiles.id="${id}";`
 	)
-		.then((results) => res.send(results.data[0]))
+		.then((results) => res.send(results.data))
 		.catch((err) => res.status(500).send(err));
 });
 
-//how to get the historical of 1 user?
-
-//POST the client fills the InitialForm // CHECKED
+// //POST the client fills the InitialForm // CHECKED
 router.post("/", function (req, res, next) {
 	const {
 		date,
@@ -76,7 +74,7 @@ router.post("/", function (req, res, next) {
 		.catch((err) => res.status(500).send(err));
 });
 
-//POST client fills the update //CHECKED
+// //POST client fills the update //CHECKED
 router.post("/", function (req, res, next) {
 	const {
 		date,
@@ -104,10 +102,10 @@ router.post("/", function (req, res, next) {
 		.catch((err) => res.status(500).send(err));
 });
 
-//DELETE if the user asks to delete all his/her data from the database
+// //DELETE if the user asks to delete all his/her data from the database (including the updates). //CHECKED
 router.delete("/:id", function (req, res, next) {
 	const { id } = req.params;
-	db(`DELETE FROM Profile WHERE id=${id};`)
+	db(`DELETE FROM Profiles WHERE Profiles.id="${id}";`)
 		.then(() => {
 			res.send({
 				message: "The client data has been deleted from our database",
