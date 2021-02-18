@@ -3,9 +3,9 @@ var router = express.Router();
 const db = require("../model/helper");
 
 // /* GET users listing. */
-router.get("/", function (req, res, next) {
-	res.send("respond with a resource");
-});
+// router.get("/", function (req, res, next) {
+// 	res.send("respond with a resource");
+// });
 
 // // // GET users list //CHECKED
 router.get("/", function (req, res, next) {
@@ -22,32 +22,22 @@ router.get("/:id", function (req, res, next) {
 		.catch((err) => res.status(500).send(err));
 });
 
-// GET the history updates of a user //CHECKED
-router.get("/:id", function (req, res, next) {
-	const { id } = req.params;
-	db(
-		`SELECT Profiles.firstname, Profiles.lastname, Updates.* FROM Updates INNER JOIN Profiles ON Profiles.id=Updates.profile_id WHERE Profiles.id="${id}";`
-	)
-		.then((results) => res.send(results.data))
-		.catch((err) => res.status(500).send(err));
-});
-
 // //POST the client fills the InitialForm // CHECKED
 router.post("/", function (req, res, next) {
 	const {
-		date,
+		date = "2021-02-18",
 		firstname,
 		lastname,
-		age,
+		age = 2001,
 		email,
-		phone,
+		phone = 0,
 		job,
 		jobHoursPerDay,
 		injuries,
 		nociveSubstances,
 		suplements,
 		rest,
-		nightWakeUps,
+		nightWakeUps = 0,
 		sleepEnvironment,
 		alergies,
 		carbohydratesFeeling,
@@ -58,46 +48,18 @@ router.post("/", function (req, res, next) {
 		squat,
 		benchPress,
 		deadweight,
-		height,
-		fat,
-		kcal,
-		proteins,
-		G,
-		water,
+		height = 100,
+		fat = 10,
+		kcal = 10,
+		proteins = 10,
+		G = 10,
+		water = 10,
 	} = req.body;
 	db(
 		`INSERT INTO Profiles (date, firstname, lastname, age, email, phone, job, jobHoursPerDay, injuries, nociveSubstances, suplements, rest, nightWakeUps, sleepEnvironment, alergies, carbohydratesFeeling, prevTrainings, objectives, availability, numTrainingDays, squat, benchPress, deadweight, height, fat, kcal, proteins, G, water) VALUES ("${date}", "${firstname}", "${lastname}", "${age}", "${email}", "${phone}", "${job}", "${jobHoursPerDay}", "${injuries}", "${nociveSubstances}", "${suplements}", "${rest}", "${nightWakeUps}", "${sleepEnvironment}", "${alergies}", "${carbohydratesFeeling}", "${prevTrainings}", "${objectives}", "${availability}", "${numTrainingDays}", "${squat}", "${benchPress}", "${deadweight}", "${height}", "${fat}", "${kcal}", "${proteins}", "${G}", "${water}");`
 	)
 		.then(() => {
 			res.send({ message: "The form has been sent!" });
-		})
-		.catch((err) => res.status(500).send(err));
-});
-
-// //POST client fills the update //CHECKED
-router.post("/", function (req, res, next) {
-	const {
-		date,
-		profile_id,
-		weight,
-		arm,
-		weist,
-		leg,
-		stressLevel,
-		sleepHours,
-		steps,
-		dietCompliment,
-		feelings,
-		trainingsSummary,
-		picFront,
-		picBack,
-		picSide,
-	} = req.body;
-	db(
-		`INSERT INTO Updates (date, profile_id, weight, arm, weist, leg, stressLevel, sleepHours, steps, dietCompliment, Feelings, trainingsSummary, picFront, picBack, picSide) VALUES ("${date}", "${profile_id}", "${weight}", "${arm}", "${weist}", "${leg}", "${stressLevel}", "${sleepHours}", "${steps}", "${dietCompliment}", "${feelings}", "${trainingsSummary}", "${picFront}", "${picBack}", "${picSide}");`
-	)
-		.then(() => {
-			res.send({ message: "The update form has been sent!" });
 		})
 		.catch((err) => res.status(500).send(err));
 });

@@ -9,18 +9,18 @@ export default function Myarea() {
 			<div>Myarea</div>
 			<ul>
 				<li>
-					<Link to="/profile">Perfil</Link>
+					<Link to="/myarea/profile">Perfil</Link>
 				</li>
 				<li>
-					<Link to="/update">Progreso</Link>
+					<Link to="/myarea//update">Progreso</Link>
 				</li>
 			</ul>
 			<div>
 				<Switch>
-					<Route path="/profile">
+					<Route path="/myarea/profile">
 						<Profile />
 					</Route>
-					<Route path="/update">
+					<Route path="/myarea//update">
 						<Update />
 					</Route>
 				</Switch>

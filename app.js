@@ -5,7 +5,8 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var profilesRouter = require("./routes/profiles");
+var updatesRouter = require("./routes/updates");
 
 var app = express();
 
@@ -16,7 +17,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/profiles", profilesRouter);
+app.use("/updates", updatesRouter);
 
 // Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {

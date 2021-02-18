@@ -12,26 +12,26 @@ function App() {
 	return (
 		<Router>
 			<div className="App">
-				<h1>BodyCultureBCN</h1>
+				<h1>BodyCultureBcn</h1>
 				<nav>
 					<ul>
 						<li>
 							<Link to="/">Home</Link>
 						</li>
 						<li>
-							<Link to="/about">¿Qué es BcB?</Link>
+							<Link to="/about">¿What is BcB?</Link>
 						</li>
 						<li>
-							<Link to="/content">Contenido</Link>
+							<Link to="/content">Content</Link>
 						</li>
 						<li>
-							<Link to="/myarea">Mis registros</Link>
+							<Link to="/myarea">My area</Link>
 						</li>
 						<li>
 							<Link to="/dashboard">Dashboard</Link>
 						</li>
 						<li>
-							<Link to="/contact">Contacto</Link>
+							<Link to="/contact">Contact</Link>
 						</li>
 					</ul>
 				</nav>

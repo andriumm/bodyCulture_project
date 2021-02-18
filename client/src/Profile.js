@@ -4,19 +4,19 @@ import { useState, useEffect } from "react";
 export default function Profile() {
 	// create a use state for each field
 	const [userInfo, setUserInfo] = useState({
-		date: "",
+		date: undefined,
 		firstname: "",
 		lastname: "",
-		age: 0,
+		age: undefined,
 		email: "",
-		phone: "",
+		phone: undefined,
 		job: "",
 		jobHoursPerDay: "",
 		injuries: "",
 		nociveSubstances: "",
 		suplements: "",
 		rest: "",
-		nightWakeUps: "",
+		nightWakeUps: undefined,
 		sleepEnvironment: "",
 		alergies: "",
 		carbohydratesFeeling: "",
@@ -27,13 +27,13 @@ export default function Profile() {
 		squat: "",
 		benchPress: "",
 		deadweight: "",
-		height: "",
-		fat: "",
-		kcal: "",
-		proteins: "",
-		g: "",
-		water: "",
-		ch: "",
+		height: undefined,
+		fat: undefined,
+		kcal: undefined,
+		proteins: undefined,
+		g: undefined,
+		water: undefined,
+		ch: undefined,
 	});
 
 	// useEffect(() => {
@@ -60,27 +60,22 @@ export default function Profile() {
 
 	//this function is triggered when we submit the form with the button enviar. (that's why it is called in the handleSubmit function)
 	const addProfile = () => {
-		fetch("/users", {
+		fetch("/profiles", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ userInfo }),
-		});
-		// .then(
-		// 	() => {
-		// 		res.send({
-		// 			message: "Tu información se ha guardado correctamente!",
-		// 		});
-		// 	} //confirms the info has been submited.
-		// )
-		// .catch((error) => {
-		// 	console.log(error);
-		// });
+			body: JSON.stringify(userInfo),
+		})
+			.then(() => console.log({ message: "Your information has been sent!" }))
+
+			.catch((error) => {
+				console.log(error);
+			});
 	};
 	return (
 		<div>
-			<h3>Perfil Inicial</h3>
+			<h3>Profile</h3>
 			<p>
 				Antes de responder el cuestionario, ten en cuenta que aquí no hay
 				respuestas correctas o incorrectas – simplemente debes ser completamente
@@ -89,7 +84,7 @@ export default function Profile() {
 			</p>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="dateInput">
-					<p>Fecha (yyyy-mm-dd)</p>
+					<p>Date (yyyy-mm-dd):</p>
 					<input
 						type="text"
 						id="dateInput"
@@ -99,7 +94,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="firstnameInput">
-					<p>Nombre</p>
+					<p>Name: / Nombre:</p>
 					<input
 						type="text"
 						id="firstnameInput"
@@ -109,7 +104,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="lastnameInput">
-					<p>Apellidos</p>
+					<p>Lastname: / Apellidos: </p>
 					<input
 						type="text"
 						id="lastnameInput"
@@ -119,7 +114,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="ageInput">
-					<p>Año de nacimiento</p>
+					<p>Year of birth: / Año de nacimiento:</p>
 					<input
 						type="number"
 						id="ageInput"
@@ -129,7 +124,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="emailInput">
-					<p>Email</p>
+					<p>Email:</p>
 					<input
 						type="email"
 						id="emailInput"
@@ -139,7 +134,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="phoneInput">
-					<p>Móvil/Telf</p>
+					<p>Phone / Móvil/Telf</p>
 					<input
 						type="text"
 						id="phoneInput"
@@ -148,9 +143,9 @@ export default function Profile() {
 						onChange={handleInputChange}
 					></input>
 				</label>
-				<h5>SALUD Y ESTILO DE VIDA</h5>
+				<h5>HEALTH AND LIFESTYLE / SALUD Y ESTILO DE VIDA</h5>
 				<label htmlFor="jobInput">
-					<p>¿A qué te dedicas?</p>
+					<p>What's your job? / ¿A qué te dedicas?</p>
 					<input
 						type="text"
 						id="jobInput"
@@ -160,7 +155,10 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="jobHoursPerDayInput">
-					<p>¿Cuántas horas trabajas al día?</p>
+					<p>
+						How many hours do you work per day? / ¿Cuántas horas trabajas al
+						día?
+					</p>
 					<input
 						type="number"
 						id="jobHoursPerDayInput"
@@ -171,8 +169,10 @@ export default function Profile() {
 				</label>
 				<label htmlFor="injuriesInput">
 					<p>
-						¿Has tenido alguna lesión previa / problemas médicos que puedan
-						tener repercusiones en un programa de ejercicio?
+						Have you ever had any injury, medical problems that could have a bad
+						impact in the training program? / ¿Has tenido alguna lesión previa /
+						problemas médicos que puedan tener repercusiones en un programa de
+						ejercicio?
 					</p>
 					<input
 						type="text"
@@ -183,7 +183,10 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="nociveSubstancesInput">
-					<p>¿Fumas, bebes o tomas algún tipo de sustancia estupefaciente?</p>
+					<p>
+						Do you smoke, drink or take drugs? / ¿Fumas, bebes o tomas algún
+						tipo de sustancia estupefaciente?
+					</p>
 					<input
 						type="text"
 						id="nociveSubstancesInput"
@@ -194,7 +197,8 @@ export default function Profile() {
 				</label>
 				<label htmlFor="suplementsInput">
 					<p>
-						¿Tomas en la actualidad algún suplemento deportivo o para tu salud?
+						Do you take any suplmenent for training or for your health? / ¿Tomas
+						en la actualidad algún suplemento deportivo o para tu salud?
 					</p>
 					<input
 						type="text"
@@ -207,7 +211,10 @@ export default function Profile() {
 
 				<h5>SUEÑO Y NUTRICIÓN</h5>
 				<label htmlFor="restInput">
-					<p>¿Duermes y descansas bien por la noche?</p>
+					<p>
+						Do you have a good rest at when you sleep at night? / ¿Duermes y
+						descansas bien por la noche?
+					</p>
 					<input
 						type="text"
 						id="restInput"
@@ -217,7 +224,10 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="nightWakeUpsInput">
-					<p>¿Te levantas a media noche? Si es así, ¿cuántas veces?</p>
+					<p>
+						Do you wake up at night? If yes, how many times? / ¿Te levantas a
+						media noche? Si es así, ¿cuántas veces?
+					</p>
 					<input
 						type="text"
 						id="nightWakeUpsInput"
@@ -227,7 +237,10 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="sleepEnvironmentInput">
-					<p>¿Duermes con ruido, luz o aparatos electrónicos encendidos?</p>
+					<p>
+						How is your sleep environment? (noises, lights, devices...) /
+						¿Duermes con ruido, luz o aparatos electrónicos encendidos?
+					</p>
 					<input
 						type="text"
 						id="sleepEnvironmentInput"
@@ -237,7 +250,10 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="alergiesInput">
-					<p>¿Tienes alguna alergia o intolerancia a algún alimento?</p>
+					<p>
+						Do you have any allergy or food intolerance? / ¿Tienes alguna
+						alergia o intolerancia a algún alimento?
+					</p>
 					<input
 						type="text"
 						id="alergiesInput"
@@ -248,9 +264,11 @@ export default function Profile() {
 				</label>
 				<label htmlFor="carbohydratesFeelingInput">
 					<p>
-						¿Cómo te sientes después de comer muchos carbohidratos?
-						Especialmente productos con gluten / a base de trigo (ej: pasta,
-						cereales etc) (Energizado, Somnoliento, Enfermo o Ningún efecto.)
+						How do you feel when you consume carbohydrates? (Energized, Sleepy,
+						Sick, Any effects on me) / ¿Cómo te sientes después de comer muchos
+						carbohidratos? Especialmente productos con gluten / a base de trigo
+						(ej: pasta, cereales etc) (Energizado, Somnoliento, Enfermo o Ningún
+						efecto.)
 					</p>
 					<input
 						type="text"
@@ -260,9 +278,9 @@ export default function Profile() {
 						onChange={handleInputChange}
 					></input>
 				</label>
-				<h5>Entrenamiento</h5>
+				<h5>Training / Entrenamiento</h5>
 				<label htmlFor="prevTrainingsInput">
-					<p>¿Cómo has entrenado últimamente?</p>
+					<p>How have you trained lately? / ¿Cómo has entrenado últimamente?</p>
 					<input
 						type="text"
 						id="prevTrainingsInput"
@@ -272,7 +290,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="objectivesInput">
-					<p>¿Cuáles son tus objetivos?</p>
+					<p>What are your goals / ¿Cuáles son tus objetivos?</p>
 					<input
 						type="text"
 						id="objectivesInput"
@@ -282,7 +300,10 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="availabilityInput">
-					<p>¿De cuánto tiempo dispones?</p>
+					<p>
+						What's your availability? How much time do you have / ¿De cuánto
+						tiempo dispones?
+					</p>
 					<input
 						type="text"
 						id="availabilityInput"
@@ -292,7 +313,10 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="numTrainingDaysInput">
-					<p>¿Cuántos días te gustaría entrenar?</p>
+					<p>
+						How many days per week you would like to train / ¿Cuántos días te
+						gustaría entrenar?
+					</p>
 					<input
 						type="text"
 						id="numTrainingDaysInput"
@@ -302,7 +326,9 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="squatInput">
-					<p>¿Qué marcas manejas en sentadilla?</p>
+					<p>
+						What are your marks in squat? / ¿Qué marcas manejas en sentadilla?
+					</p>
 					<input
 						type="text"
 						id="squatInput"
@@ -312,7 +338,10 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="benchPressInput">
-					<p>¿Qué marcas manejas en press banca?</p>
+					<p>
+						What are your marks in bench press? ¿Qué marcas manejas en press
+						banca?
+					</p>
 					<input
 						type="text"
 						id="benchPressInput"
@@ -322,7 +351,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="deadweightInput">
-					<p>¿Qué marcas manejas en peso muerto?</p>
+					<p>What are your marks in deadweight?</p>
 					<input
 						type="text"
 						id="deadweightInput"
@@ -331,9 +360,11 @@ export default function Profile() {
 						onChange={handleInputChange}
 					></input>
 				</label>
-				<h5>Y por último, algunas medidas más...</h5>
+				<h5>
+					And last but not least... / Y por último, algunas medidas más...
+				</h5>
 				<label htmlFor="heightInput">
-					<p>Altura (en cm):</p>
+					<p>Height: / Altura (en cm):</p>
 					<input
 						type="text"
 						id="heightInput"
@@ -343,7 +374,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="fatInput">
-					<p>% de grasa aproximado:</p>
+					<p>% of fat (approximately) / % de grasa aproximado:</p>
 					<input
 						type="text"
 						id="fatInput"
@@ -353,7 +384,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="kcalInput">
-					<p>Kcal:</p>
+					<p>Kcal: / Kcal:</p>
 					<input
 						type="text"
 						id="kcalInput"
@@ -363,7 +394,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="proteinsInput">
-					<p>Proteínas por gramo de peso:</p>
+					<p>Proteins per gram of weight: / Proteínas por gramo de peso:</p>
 					<input
 						type="text"
 						id="proteinsInput"
@@ -373,7 +404,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="GInput">
-					<p>G por gramo de peso:</p>
+					<p>G per gram of weight: / G por gramo de peso:</p>
 					<input
 						type="text"
 						id="GInput"
@@ -383,7 +414,10 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="waterInput">
-					<p>¿Cuánta agua ingieres al día actualmente?</p>
+					<p>
+						How much water do you drink per day? / ¿Cuánta agua ingieres al día
+						actualmente?
+					</p>
 					<input
 						type="text"
 						id="waterInput"
@@ -393,7 +427,7 @@ export default function Profile() {
 					></input>
 				</label>
 				<label htmlFor="chInput">
-					<p>Ch por gramo de peso:</p>
+					<p>G per gram of weight: / Ch por gramo de peso:</p>
 					<input
 						type="text"
 						id="chInput"

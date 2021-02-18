@@ -3,20 +3,20 @@ import { useState, useEffect } from "react";
 
 export default function Update() {
 	const [userUpdate, setUserUpdate] = useState({
-		date: "",
-		profile_id: "",
-		weight: "",
-		arm: "",
-		weist: "",
-		leg: "",
-		stressLevel: "",
-		sleepHours: "",
-		steps: "",
-		dietCompliment: "",
-		feelings: "",
-		picFront: "",
-		picBack: "",
-		picSide: "",
+		date: undefined,
+		profile_id: undefined,
+		weight: undefined,
+		arm: undefined,
+		weist: undefined,
+		leg: undefined,
+		stressLevel: undefined,
+		sleepHours: undefined,
+		steps: undefined,
+		dietCompliment: undefined,
+		feelings: undefined,
+		picFront: undefined,
+		picBack: undefined,
+		picSide: undefined,
 	});
 
 	const handleSubmit = (event) => {
@@ -34,23 +34,20 @@ export default function Update() {
 	};
 
 	const addUpdate = () => {
-		fetch("/users", {
+		fetch("/updates", {
 			method: "POST",
 			headers: {
+				//it doesn't work with multipart/form-data.
+				//"Content-Type": "multipart/form-data",
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ userUpdate }),
-		});
-		// .then(
-		// 	() => {
-		// 		res.send({
-		// 			message: "Tu información se ha guardado correctamente!",
-		// 		});
-		// 	} //confirms the info has been submited.
-		// )
-		// .catch((error) => {
-		// 	console.log(error);
-		// });
+			body: JSON.stringify(userUpdate),
+		})
+			.then(() => console.log({ message: "Your update has been sent!" }))
+
+			.catch((error) => {
+				console.log(error);
+			});
 	};
 
 	return (
@@ -58,14 +55,18 @@ export default function Update() {
 			<div>
 				<h3>Update</h3>
 				<p>
-					Debes rellenar este cuestionario cada 14 días y enviarlo completado.
-					Además, dispones de 3 espacios para subir 3 fotos en ayunas en ropa
-					interior / deportiva (frontal, lateral y de espaldas). Te recomiendo
-					hacerlas siempre el mismo día con la misma luz y en el mismo lugar.
+					Please, fill the form every 14 days. In addition, at the end you have
+					3 fields to upload 3 pictures dressed only with the underwear (front,
+					back and side picture). I recommend you to take them the same day with
+					the same light and at the same place / Debes rellenar este
+					cuestionario cada 14 días y enviarlo completado. Además, dispones de 3
+					espacios para subir 3 fotos en ayunas en ropa interior / deportiva
+					(frontal, lateral y de espaldas). Te recomiendo hacerlas siempre el
+					mismo día con la misma luz y en el mismo lugar.
 				</p>
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="dateInput">
-						<p>Fecha (yyyy-mm-dd):</p>
+						<p>Date: / Fecha (yyyy-mm-dd):</p>
 						<input
 							type="text"
 							id="dateInput"
@@ -75,7 +76,7 @@ export default function Update() {
 						></input>
 					</label>
 					<label htmlFor="profile_idInput">
-						<p>Número de usuario:</p>
+						<p>User number / Número de usuario:</p>
 						<input
 							type="number"
 							id="profile_idInput"
@@ -85,17 +86,17 @@ export default function Update() {
 						></input>
 					</label>
 					<label htmlFor="weightInput">
-						<p>Peso en ayunas:</p>
+						<p>Fasting weight / Peso en ayunas:</p>
 						<input
 							type="text"
-							id="dateInput"
+							id="wightInput"
 							name="weightInput"
-							value={userUpdate.date}
+							value={userUpdate.weight}
 							onChange={handleInputChange}
 						></input>
 					</label>
 					<label htmlFor="armInput">
-						<p>Perímetro del brazo (cm):</p>
+						<p>Arm Perímeter / Perímetro del brazo (cm):</p>
 						<input
 							type="text"
 							id="armInput"
@@ -105,7 +106,7 @@ export default function Update() {
 						></input>
 					</label>
 					<label htmlFor="weistInput">
-						<p>Perímetro de la cintura (cm):</p>
+						<p>Weist Perímeter / Perímetro de la cintura (cm):</p>
 						<input
 							type="text"
 							id="weistInput"
@@ -115,7 +116,7 @@ export default function Update() {
 						></input>
 					</label>
 					<label htmlFor="legInput">
-						<p>Perímetro de la pierna (cm):</p>
+						<p>Leg Perímeter / Perímetro de la pierna (cm):</p>
 						<input
 							type="text"
 							id="legInput"
@@ -125,7 +126,10 @@ export default function Update() {
 						></input>
 					</label>
 					<label htmlFor="stressLevelInput">
-						<p>Estrés, del 1 al 10 (1 es tranquilo y 10 muy estresante):</p>
+						<p>
+							Stress Level from 1 to 10 (1 is no stress, 10 very stressed) /
+							Estrés, del 1 al 10 (1 es tranquilo y 10 muy estresante):
+						</p>
 						<input
 							type="text"
 							id="stressLevelInput"
@@ -135,7 +139,7 @@ export default function Update() {
 						></input>
 					</label>
 					<label htmlFor="sleepHoursInput">
-						<p>Media de horas de sueño:</p>
+						<p>Sleep hours avarage/ Media de horas de sueño:</p>
 						<input
 							type="text"
 							id="sleepHoursInput"
@@ -145,7 +149,7 @@ export default function Update() {
 						></input>
 					</label>
 					<label htmlFor="stepsInput">
-						<p>Media de pasos diarios:</p>
+						<p>Steps/day avarage: / Media de pasos diarios:</p>
 						<input
 							type="text"
 							id="stepsInput"
@@ -156,7 +160,9 @@ export default function Update() {
 					</label>
 					<label htmlFor="dietComplimentInput">
 						<p>
-							¿Del 1 al 5 cuánto has seguido la dieta? (1 es nada y 5 al 100%)
+							{" "}
+							From 1 to 5, how much have you accomplished the diet? ¿Del 1 al 5
+							cuánto has seguido la dieta? (1 es nada y 5 al 100%)
 						</p>
 						<input
 							type="text"
@@ -167,7 +173,10 @@ export default function Update() {
 						></input>
 					</label>
 					<label htmlFor="FeelingsInput">
-						<p>Explica sensaciones y/o cosas relacionadas con ello:</p>
+						<p>
+							Express your feelings related to the diet / Explica sensaciones
+							y/o cosas relacionadas con ello:
+						</p>
 						<input
 							type="text"
 							id="FeelingsInput"
@@ -178,8 +187,10 @@ export default function Update() {
 					</label>
 					<label htmlFor="trainingsSummaryInput">
 						<p>
-							Entrenamiento; Explica brevemente cómo han ido los entrenamientos,
-							sensaciones, agujetas, molestias, dudas etc.
+							{" "}
+							Explain briefly how are the trainings going (feelings, if any
+							pain, doubts... / ) Entrenamiento; Explica brevemente cómo han ido
+							los entrenamientos, sensaciones, agujetas, molestias, dudas etc.
 						</p>
 						<input
 							type="text"
@@ -191,34 +202,37 @@ export default function Update() {
 					</label>
 					<p></p>
 					<label htmlFor="picFrontInput">
-						<p>Fotografía frontal:</p>
+						<p>Front picture / Fotografía frontal:</p>
 						<input
-							type="text"
+							type="file"
 							id="picFrontInput"
 							name="picFront"
 							value={userUpdate.picFront}
 							onChange={handleInputChange}
 						></input>
+						<button>Upload</button>
 					</label>
 					<label htmlFor="picBackInput">
-						<p>Fotografía de espaldas:</p>
+						<p>Back picture / Fotografía de espaldas:</p>
 						<input
-							type="text"
+							type="file"
 							id="picBackInput"
 							name="picBack"
 							value={userUpdate.picBack}
 							onChange={handleInputChange}
 						></input>
+						<button>Upload</button>
 					</label>
 					<label htmlFor="picSideInput">
-						<p>Fotografía lateral:</p>
+						<p>Side Picture / Fotografía lateral:</p>
 						<input
-							type="text"
+							type="file"
 							id="picSideInput"
 							name="picSide"
 							value={userUpdate.picSide}
 							onChange={handleInputChange}
 						></input>
+						<button>Upload</button>
 					</label>
 					<button type="submit">Enviar</button>
 				</form>
