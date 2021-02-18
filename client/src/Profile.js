@@ -1,12 +1,83 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 export default function Profile() {
-	const handleSubmit = (e) => {
-		e.preventDefault();
+	// create a use state for each field
+	const [userInfo, setUserInfo] = useState({
+		date: "",
+		firstname: "",
+		lastname: "",
+		age: 0,
+		email: "",
+		phone: "",
+		job: "",
+		jobHoursPerDay: "",
+		injuries: "",
+		nociveSubstances: "",
+		suplements: "",
+		rest: "",
+		nightWakeUps: "",
+		sleepEnvironment: "",
+		alergies: "",
+		carbohydratesFeeling: "",
+		prevTrainings: "",
+		objectives: "",
+		availability: "",
+		numTrainingDays: "",
+		squat: "",
+		benchPress: "",
+		deadweight: "",
+		height: "",
+		fat: "",
+		kcal: "",
+		proteins: "",
+		g: "",
+		water: "",
+		ch: "",
+	});
+
+	// useEffect(() => {
+	//     return () => {
+	//         //here I'd like to change the interface so the user only sees a confirmation message.
+	//         console.log({message: "The form has been sent"})
+	//     }
+	// }, [handleSubmit]);
+
+	//to send the information the user has filled in the form
+	const handleSubmit = (event) => {
+		event.preventDefault();
 		addProfile();
+		console.log("I work");
 	};
 
-	const addProfile = () => {};
+	const handleInputChange = ({ target }) => {
+		const { name, value } = target;
+		setUserInfo((state) => ({
+			...state,
+			[name]: value,
+		}));
+	};
+
+	//this function is triggered when we submit the form with the button enviar. (that's why it is called in the handleSubmit function)
+	const addProfile = () => {
+		fetch("/users", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ userInfo }),
+		});
+		// .then(
+		// 	() => {
+		// 		res.send({
+		// 			message: "Tu información se ha guardado correctamente!",
+		// 		});
+		// 	} //confirms the info has been submited.
+		// )
+		// .catch((error) => {
+		// 	console.log(error);
+		// });
+	};
 	return (
 		<div>
 			<h3>Perfil Inicial</h3>
@@ -17,87 +88,165 @@ export default function Profile() {
 				metas.
 			</p>
 			<form onSubmit={handleSubmit}>
-				<label for="dateInput">
-					<p>Fecha</p>
-					<input type="date" id="dateInput"></input>
+				<label htmlFor="dateInput">
+					<p>Fecha (yyyy-mm-dd)</p>
+					<input
+						type="text"
+						id="dateInput"
+						name="date"
+						value={userInfo.date}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="firstnameInput">
+				<label htmlFor="firstnameInput">
 					<p>Nombre</p>
-					<input type="text" id="firstnameInput" name="date"></input>
+					<input
+						type="text"
+						id="firstnameInput"
+						name="firstname"
+						value={userInfo.firstname}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="lastnameInput">
+				<label htmlFor="lastnameInput">
 					<p>Apellidos</p>
-					<input type="text" id="lastnameInput" name="lastname"></input>
+					<input
+						type="text"
+						id="lastnameInput"
+						name="lastname"
+						value={userInfo.lastname}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="ageInput">
+				<label htmlFor="ageInput">
 					<p>Año de nacimiento</p>
-					<input type="number" id="ageInput" name="age"></input>
+					<input
+						type="number"
+						id="ageInput"
+						name="age"
+						value={userInfo.age}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="emailInput">
+				<label htmlFor="emailInput">
 					<p>Email</p>
-					<input type="email" id="emailInput" name="email"></input>
+					<input
+						type="email"
+						id="emailInput"
+						name="email"
+						value={userInfo.email}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="phoneInput">
+				<label htmlFor="phoneInput">
 					<p>Móvil/Telf</p>
-					<input type="text" id="phoneInput" name="phone"></input>
+					<input
+						type="text"
+						id="phoneInput"
+						name="phone"
+						value={userInfo.phone}
+						onChange={handleInputChange}
+					></input>
 				</label>
 				<h5>SALUD Y ESTILO DE VIDA</h5>
-				<label for="jobInput">
+				<label htmlFor="jobInput">
 					<p>¿A qué te dedicas?</p>
-					<input type="text" id="jobInput" name="job"></input>
+					<input
+						type="text"
+						id="jobInput"
+						name="job"
+						value={userInfo.job}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="jobHoursPerDayInput">
+				<label htmlFor="jobHoursPerDayInput">
 					<p>¿Cuántas horas trabajas al día?</p>
 					<input
 						type="number"
 						id="jobHoursPerDayInput"
 						name="jobHoursPerDay"
+						value={userInfo.jobHoursPerDay}
+						onChange={handleInputChange}
 					></input>
 				</label>
-				<label for="injuriesInput">
+				<label htmlFor="injuriesInput">
 					<p>
 						¿Has tenido alguna lesión previa / problemas médicos que puedan
 						tener repercusiones en un programa de ejercicio?
 					</p>
-					<input type="text" id="injuriesInput" name="injuries"></input>
+					<input
+						type="text"
+						id="injuriesInput"
+						name="injuries"
+						value={userInfo.injuries}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="nociveSubstancesInput">
+				<label htmlFor="nociveSubstancesInput">
 					<p>¿Fumas, bebes o tomas algún tipo de sustancia estupefaciente?</p>
 					<input
 						type="text"
 						id="nociveSubstancesInput"
 						name="nociveSubstances"
+						value={userInfo.nociveSubstances}
+						onChange={handleInputChange}
 					></input>
 				</label>
-				<label for="suplementsInput">
+				<label htmlFor="suplementsInput">
 					<p>
 						¿Tomas en la actualidad algún suplemento deportivo o para tu salud?
 					</p>
-					<input type="text" id="suplementsInput" name="suplements"></input>
+					<input
+						type="text"
+						id="suplementsInput"
+						name="suplements"
+						value={userInfo.suplements}
+						onChange={handleInputChange}
+					></input>
 				</label>
 
 				<h5>SUEÑO Y NUTRICIÓN</h5>
-				<label for="restInput">
+				<label htmlFor="restInput">
 					<p>¿Duermes y descansas bien por la noche?</p>
-					<input type="text" id="restInput" name="rest"></input>
+					<input
+						type="text"
+						id="restInput"
+						name="rest"
+						value={userInfo.rest}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="nightWakeUpsInput">
+				<label htmlFor="nightWakeUpsInput">
 					<p>¿Te levantas a media noche? Si es así, ¿cuántas veces?</p>
-					<input type="text" id="nightWakeUpsInput" name="nightWakeUps"></input>
+					<input
+						type="text"
+						id="nightWakeUpsInput"
+						name="nightWakeUps"
+						value={userInfo.nightWakeUps}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="sleepEnvironmentInput">
+				<label htmlFor="sleepEnvironmentInput">
 					<p>¿Duermes con ruido, luz o aparatos electrónicos encendidos?</p>
 					<input
 						type="text"
 						id="sleepEnvironmentInput"
 						name="sleepEnvironment"
+						value={userInfo.sleepEnvironment}
+						onChange={handleInputChange}
 					></input>
 				</label>
-				<label for="alergiesInput">
+				<label htmlFor="alergiesInput">
 					<p>¿Tienes alguna alergia o intolerancia a algún alimento?</p>
-					<input type="text" id="alergiesInput" name="alergies"></input>
+					<input
+						type="text"
+						id="alergiesInput"
+						name="alergies"
+						value={userInfo.alergies}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="carbohydratesFeelingInput">
+				<label htmlFor="carbohydratesFeelingInput">
 					<p>
 						¿Cómo te sientes después de comer muchos carbohidratos?
 						Especialmente productos con gluten / a base de trigo (ej: pasta,
@@ -107,80 +256,187 @@ export default function Profile() {
 						type="text"
 						id="carbohydratesFeelingInput"
 						name="carbohydratesFeeling"
+						value={userInfo.carbohydratesFeeling}
+						onChange={handleInputChange}
 					></input>
 				</label>
 				<h5>Entrenamiento</h5>
-				<label for="prevTrainingsInput">
+				<label htmlFor="prevTrainingsInput">
 					<p>¿Cómo has entrenado últimamente?</p>
 					<input
 						type="text"
 						id="prevTrainingsInput"
 						name="prevTrainings"
+						value={userInfo.prevTrainings}
+						onChange={handleInputChange}
 					></input>
 				</label>
-				<label for="objectivesInput">
+				<label htmlFor="objectivesInput">
 					<p>¿Cuáles son tus objetivos?</p>
-					<input type="text" id="objectivesInput" name="objectives"></input>
+					<input
+						type="text"
+						id="objectivesInput"
+						name="objectives"
+						value={userInfo.objectives}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="availabilityInput">
+				<label htmlFor="availabilityInput">
 					<p>¿De cuánto tiempo dispones?</p>
-					<input type="text" id="availabilityInput" name="availability"></input>
+					<input
+						type="text"
+						id="availabilityInput"
+						name="availability"
+						value={userInfo.availability}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="numTrainingDaysInput">
+				<label htmlFor="numTrainingDaysInput">
 					<p>¿Cuántos días te gustaría entrenar?</p>
 					<input
 						type="text"
 						id="numTrainingDaysInput"
 						name="numTrainingDays"
+						value={userInfo.numTrainingDays}
+						onChange={handleInputChange}
 					></input>
 				</label>
-				<label for="squatInput">
+				<label htmlFor="squatInput">
 					<p>¿Qué marcas manejas en sentadilla?</p>
-					<input type="text" id="squatInput" name="squat"></input>
+					<input
+						type="text"
+						id="squatInput"
+						name="squat"
+						value={userInfo.squat}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="benchPressInput">
+				<label htmlFor="benchPressInput">
 					<p>¿Qué marcas manejas en press banca?</p>
 					<input
 						type="text"
 						id="benchPressInput"
-						name="phbenchPressone"
+						name="benchPress"
+						value={userInfo.benchPress}
+						onChange={handleInputChange}
 					></input>
 				</label>
-				<label for="deadweightInput">
+				<label htmlFor="deadweightInput">
 					<p>¿Qué marcas manejas en peso muerto?</p>
-					<input type="text" id="deadweightInput" name="deadweight"></input>
+					<input
+						type="text"
+						id="deadweightInput"
+						name="deadweight"
+						value={userInfo.deadweight}
+						onChange={handleInputChange}
+					></input>
 				</label>
 				<h5>Y por último, algunas medidas más...</h5>
-				<label for="heightInput">
+				<label htmlFor="heightInput">
 					<p>Altura (en cm):</p>
-					<input type="text" id="heightInput" name="height"></input>
+					<input
+						type="text"
+						id="heightInput"
+						name="height"
+						value={userInfo.height}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="fatInput">
+				<label htmlFor="fatInput">
 					<p>% de grasa aproximado:</p>
-					<input type="text" id="fatInput" name="fat"></input>
+					<input
+						type="text"
+						id="fatInput"
+						name="fat"
+						value={userInfo.fat}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="kcalInput">
+				<label htmlFor="kcalInput">
 					<p>Kcal:</p>
-					<input type="text" id="kcalInput" name="kcal"></input>
+					<input
+						type="text"
+						id="kcalInput"
+						name="kcal"
+						value={userInfo.kcal}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="proteinsInput">
+				<label htmlFor="proteinsInput">
 					<p>Proteínas por gramo de peso:</p>
-					<input type="text" id="proteinsInput" name="proteins"></input>
+					<input
+						type="text"
+						id="proteinsInput"
+						name="proteins"
+						value={userInfo.proteins}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="GInput">
+				<label htmlFor="GInput">
 					<p>G por gramo de peso:</p>
-					<input type="text" id="GInput" name="G"></input>
+					<input
+						type="text"
+						id="GInput"
+						name="g"
+						value={userInfo.g}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="waterInput">
+				<label htmlFor="waterInput">
 					<p>¿Cuánta agua ingieres al día actualmente?</p>
-					<input type="text" id="waterInput" name="water"></input>
+					<input
+						type="text"
+						id="waterInput"
+						name="water"
+						value={userInfo.water}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<label for="chInput">
+				<label htmlFor="chInput">
 					<p>Ch por gramo de peso:</p>
-					<input type="text" id="chInput" name="ch"></input>
+					<input
+						type="text"
+						id="chInput"
+						name="ch"
+						value={userInfo.ch}
+						onChange={handleInputChange}
+					></input>
 				</label>
-				<button type="button">Enviar</button>
+				<button type="submit">Enviar</button>
 			</form>
 		</div>
 	);
 }
+
+// {
+//     date,
+//     firstname,
+//     lastname,
+//     age,
+//     email,
+//     phone,
+//     job,
+//     jobHoursPerDay,
+//     injuries,
+//     nociveSubstances,
+//     suplements,
+//     rest,
+//     nightWakeUps,
+//     sleepEnvironment,
+//     alergies,
+//     carbohydratesFeeling,
+//     prevTrainings,
+//     objectives,
+//     availability,
+//     numTrainingDays,
+//     squat,
+//     benchPress,
+//     deadweight,
+//     height,
+//     fat,
+//     kcal,
+//     proteins,
+//     g,
+//     water,
+//     ch,
+// }
