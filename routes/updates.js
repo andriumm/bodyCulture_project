@@ -27,7 +27,7 @@ router.get("/:id", function (req, res, next) {
 // //POST client fills the update form //CHECKED
 router.post("/", function (req, res, next) {
 	const {
-		date = "2021-02-18",
+		date = "2021-02-19",
 		profile_id = 0,
 		weight = 0,
 		arm = 0,
@@ -37,11 +37,11 @@ router.post("/", function (req, res, next) {
 		sleepHours = 0,
 		steps = 0,
 		dietCompliment = 0,
-		feelings = "",
-		trainingsSummary = "",
-		picFront = "",
-		picBack = "",
-		picSide = "",
+		feelings,
+		trainingsSummary,
+		picFront,
+		picBack,
+		picSide,
 	} = req.body;
 	db(
 		`INSERT INTO Updates (date, profile_id, weight, arm, weist, leg, stressLevel, sleepHours, steps, dietCompliment, Feelings, trainingsSummary, picFront, picBack, picSide) VALUES ("${date}", "${profile_id}", "${weight}", "${arm}", "${weist}", "${leg}", "${stressLevel}", "${sleepHours}", "${steps}", "${dietCompliment}", "${feelings}", "${trainingsSummary}", "${picFront}", "${picBack}", "${picSide}");`

@@ -12,25 +12,27 @@ function App() {
 	return (
 		<Router>
 			<div className="App">
-				<h1>BodyCultureBcn</h1>
+				<Link to="/">
+					<h1 className="text-center my-4">BodyCultureBcn</h1>
+				</Link>
 				<nav>
-					<ul>
-						<li>
+					<ul className="nav">
+						<li className="mx-4">
 							<Link to="/">Home</Link>
 						</li>
-						<li>
+						<li className="mx-4">
 							<Link to="/about">¿What is BcB?</Link>
 						</li>
-						<li>
+						<li className="mx-4">
 							<Link to="/content">Content</Link>
 						</li>
-						<li>
+						<li className="mx-4">
 							<Link to="/myarea">My area</Link>
 						</li>
-						<li>
+						<li className="mx-4">
 							<Link to="/dashboard">Dashboard</Link>
 						</li>
-						<li>
+						<li className="mx-4">
 							<Link to="/contact">Contact</Link>
 						</li>
 					</ul>

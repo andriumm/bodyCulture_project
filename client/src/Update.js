@@ -3,20 +3,21 @@ import { useState, useEffect } from "react";
 
 export default function Update() {
 	const [userUpdate, setUserUpdate] = useState({
-		date: undefined,
-		profile_id: undefined,
-		weight: undefined,
-		arm: undefined,
-		weist: undefined,
-		leg: undefined,
-		stressLevel: undefined,
-		sleepHours: undefined,
-		steps: undefined,
-		dietCompliment: undefined,
-		feelings: undefined,
-		picFront: undefined,
-		picBack: undefined,
-		picSide: undefined,
+		date: "",
+		profile_id: 0,
+		weight: 0,
+		arm: 0,
+		weist: 0,
+		leg: 0,
+		stressLevel: 0,
+		sleepHours: 0,
+		steps: 0,
+		dietCompliment: 0,
+		feelings: "",
+		trainingsSummary: "",
+		picFront: "",
+		picBack: "",
+		picSide: "",
 	});
 
 	const handleSubmit = (event) => {
@@ -88,7 +89,7 @@ export default function Update() {
 					<label htmlFor="weightInput">
 						<p>Fasting weight / Peso en ayunas:</p>
 						<input
-							type="text"
+							type="number"
 							id="wightInput"
 							name="weightInput"
 							value={userUpdate.weight}
@@ -98,7 +99,7 @@ export default function Update() {
 					<label htmlFor="armInput">
 						<p>Arm Perímeter / Perímetro del brazo (cm):</p>
 						<input
-							type="text"
+							type="number"
 							id="armInput"
 							name="arm"
 							value={userUpdate.arm}
@@ -108,7 +109,7 @@ export default function Update() {
 					<label htmlFor="weistInput">
 						<p>Weist Perímeter / Perímetro de la cintura (cm):</p>
 						<input
-							type="text"
+							type="number"
 							id="weistInput"
 							name="weist"
 							value={userUpdate.weist}
@@ -118,7 +119,7 @@ export default function Update() {
 					<label htmlFor="legInput">
 						<p>Leg Perímeter / Perímetro de la pierna (cm):</p>
 						<input
-							type="text"
+							type="number"
 							id="legInput"
 							name="leg"
 							value={userUpdate.leg}
@@ -131,7 +132,7 @@ export default function Update() {
 							Estrés, del 1 al 10 (1 es tranquilo y 10 muy estresante):
 						</p>
 						<input
-							type="text"
+							type="number"
 							id="stressLevelInput"
 							name="stressLevel"
 							value={userUpdate.stressLevel}
@@ -141,7 +142,7 @@ export default function Update() {
 					<label htmlFor="sleepHoursInput">
 						<p>Sleep hours avarage/ Media de horas de sueño:</p>
 						<input
-							type="text"
+							type="number"
 							id="sleepHoursInput"
 							name="sleepHours"
 							value={userUpdate.sleepHours}
@@ -151,7 +152,7 @@ export default function Update() {
 					<label htmlFor="stepsInput">
 						<p>Steps/day avarage: / Media de pasos diarios:</p>
 						<input
-							type="text"
+							type="number"
 							id="stepsInput"
 							name="steps"
 							value={userUpdate.steps}
@@ -165,7 +166,7 @@ export default function Update() {
 							cuánto has seguido la dieta? (1 es nada y 5 al 100%)
 						</p>
 						<input
-							type="text"
+							type="number"
 							id="dietComplimentInput"
 							name="dietCompliment"
 							value={userUpdate.dietCompliment}

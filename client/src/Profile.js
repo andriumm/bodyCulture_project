@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 export default function Profile() {
 	// create a use state for each field
 	const [userInfo, setUserInfo] = useState({
-		date: undefined,
+		date: "",
 		firstname: "",
 		lastname: "",
 		age: undefined,
@@ -32,8 +32,8 @@ export default function Profile() {
 		kcal: undefined,
 		proteins: undefined,
 		g: undefined,
-		water: undefined,
 		ch: undefined,
+		water: undefined,
 	});
 
 	// useEffect(() => {
@@ -413,6 +413,16 @@ export default function Profile() {
 						onChange={handleInputChange}
 					></input>
 				</label>
+				<label htmlFor="chInput">
+					<p>Ch per gram of weight: / Ch por gramo de peso:</p>
+					<input
+						type="text"
+						id="chInput"
+						name="ch"
+						value={userInfo.ch}
+						onChange={handleInputChange}
+					></input>
+				</label>
 				<label htmlFor="waterInput">
 					<p>
 						How much water do you drink per day? / ¿Cuánta agua ingieres al día
@@ -423,16 +433,6 @@ export default function Profile() {
 						id="waterInput"
 						name="water"
 						value={userInfo.water}
-						onChange={handleInputChange}
-					></input>
-				</label>
-				<label htmlFor="chInput">
-					<p>G per gram of weight: / Ch por gramo de peso:</p>
-					<input
-						type="text"
-						id="chInput"
-						name="ch"
-						value={userInfo.ch}
 						onChange={handleInputChange}
 					></input>
 				</label>

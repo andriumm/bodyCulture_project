@@ -53,6 +53,7 @@ router.post("/", function (req, res, next) {
 		kcal = 10,
 		proteins = 10,
 		G = 10,
+		ch = 0,
 		water = 10,
 	} = req.body;
 	db(
