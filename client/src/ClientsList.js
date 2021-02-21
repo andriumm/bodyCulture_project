@@ -90,24 +90,26 @@ export default function ClientsList() {
 			<h5 className="text-center mb-4">
 				Click on the name whose info you'd like to check
 			</h5>
-			<div>
+			<div className="container">
 				{clients.length ? (
-					<ul>
-						{clients.map((client) => (
-							<li key={client.id}>
-								<span onClick={() => displayProfile(client.id)}>
-									<h6 className="d-inline mx-2">{client.id}</h6>
-									<h6 className="d-inline">
-										{client.firstname} {client.lastname}
-									</h6>
-								</span>
-							</li>
-						))}
-					</ul>
+					<div>
+						<ul>
+							{clients.map((client) => (
+								<li key={client.id}>
+									<span onClick={() => displayProfile(client.id)}>
+										<h6 className="d-inline mx-2">{client.id}</h6>
+										<h6 className="d-inline">
+											{client.firstname} {client.lastname}
+										</h6>
+									</span>
+								</li>
+							))}
+						</ul>
+					</div>
 				) : null}
 			</div>
 			{viewClient.id && (
-				<div>
+				<div className="container">
 					<span>
 						<h3>
 							{viewClient.firstname} {viewClient.lastname}
@@ -145,15 +147,6 @@ export default function ClientsList() {
 					<div>here I'll display all the information :)</div>
 				</div>
 			) : null}
-
-			<div>{viewClient.id && <div></div>}</div>
-			{/* {Object.entries(viewClient).map((key) => {
-				return (
-					<li>
-						{viewClient[key]}: {viewClient.key}
-					</li>
-				);
-			})} */}
 		</div>
 	);
 }
@@ -200,4 +193,17 @@ export default function ClientsList() {
 								})} 
 							</tbody>
 						</table> */
+}
+
+{
+	/* <div>{viewClient.id && <div></div>}</div> */
+}
+{
+	/* {Object.entries(viewClient).map((key) => {
+				return (
+					<li>
+						{viewClient[key]}: {viewClient.key}
+					</li>
+				);
+			})} */
 }

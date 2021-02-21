@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	NavLink,
+} from "react-router-dom";
 import "./App.css";
 import Home from "./Home.js";
 import About from "./About.js";
@@ -10,30 +16,48 @@ import Contact from "./Contact.js";
 
 function App() {
 	return (
-		<Router>
+		<Router className="Router">
 			<div className="App">
-				<Link to="/">
-					<h1 className="text-center my-4">BodyCultureBcn</h1>
+				<img
+					src={"./BODYCULTURE LOGO_NEGRO-01.png"}
+					alt="logo"
+					className="img-fluid mx-4 my-4"
+					id="logo"
+				></img>
+				<Link to="/" className="nav-link text-center text-light">
+					<h1 id="title">BodyCultureBcn</h1>
 				</Link>
-				<nav>
-					<ul className="nav">
-						<li className="mx-4">
-							<Link to="/">Home</Link>
+				<nav id="navbar" className="mt-5">
+					<ul className="nav justify-content-center fw-bold">
+						<li className="mx-4 text-decoration-none">
+							<Link to="/" className="text-decoration-none text-light">
+								Home
+							</Link>
 						</li>
-						<li className="mx-4">
-							<Link to="/about">¿What is BcB?</Link>
+						<li className="mx-4 px-3">
+							<Link to="/about" className="text-decoration-none text-light">
+								About us
+							</Link>
 						</li>
-						<li className="mx-4">
-							<Link to="/content">Content</Link>
+						<li className="mx-4 px-3">
+							<Link to="/content" className="text-decoration-none text-light">
+								Content
+							</Link>
 						</li>
-						<li className="mx-4">
-							<Link to="/myarea">My area</Link>
+						<li className="mx-4 px-3">
+							<NavLink to="/myarea" className="text-decoration-none text-light">
+								My area
+							</NavLink>
 						</li>
-						<li className="mx-4">
-							<Link to="/dashboard">Dashboard</Link>
+						<li className="mx-4 px-3">
+							<Link to="/dashboard" className="text-decoration-none text-light">
+								Dashboard
+							</Link>
 						</li>
-						<li className="mx-4">
-							<Link to="/contact">Contact</Link>
+						<li className="mx-4 px-3">
+							<Link to="/contact" className="text-decoration-none text-light">
+								Contact
+							</Link>
 						</li>
 					</ul>
 				</nav>
