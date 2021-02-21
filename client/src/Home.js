@@ -11,12 +11,13 @@ export default function Home() {
 			></img>
 			<div>
 				<footer className="text-center my-4">
-					<Link
+					<a
 						href="https://www.instagram.com/bodyculturebcn/"
+						target="_blank"
 						className="text-decoration-none fs-1 text-light"
 					>
 						@bodyculturebcn
-					</Link>
+					</a>
 				</footer>
 			</div>
 		</div>

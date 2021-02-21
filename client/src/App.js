@@ -21,8 +21,8 @@ function App() {
 				<img
 					src={"./BODYCULTURE LOGO_NEGRO-01.png"}
 					alt="logo"
-					className="img-fluid mx-4 my-4"
-					id="logo"
+					//className="img-fluid mx-4 my-4"
+					//id="logo"
 				></img>
 				<Link to="/" className="nav-link text-center text-light">
 					<h1 id="title">BodyCultureBcn</h1>

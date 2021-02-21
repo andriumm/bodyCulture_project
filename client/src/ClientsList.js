@@ -86,7 +86,6 @@ export default function ClientsList() {
 
 	return (
 		<div>
-			<h4 className="text-center mb-4">These are all your clients!</h4>
 			<h5 className="text-center mb-4">
 				Click on the name whose info you'd like to check
 			</h5>
