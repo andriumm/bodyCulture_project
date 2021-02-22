@@ -9,7 +9,7 @@ const db = require("../model/helper");
 
 // // // GET users list //CHECKED
 router.get("/", function (req, res, next) {
-	db(`SELECT * FROM Profiles;`)
+	db(`SELECT * FROM Profiles ORDER BY firstname ASC;`)
 		.then((results) => res.send(results.data))
 		.catch((err) => res.status(500).send(err));
 });
@@ -36,8 +36,7 @@ router.post("/", function (req, res, next) {
 		injuries,
 		nociveSubstances,
 		suplements,
-		rest,
-		nightWakeUps = 0,
+		rest = 0,
 		sleepEnvironment,
 		alergies,
 		carbohydratesFeeling,
@@ -57,7 +56,7 @@ router.post("/", function (req, res, next) {
 		water = 10,
 	} = req.body;
 	db(
-		`INSERT INTO Profiles (date, firstname, lastname, age, email, phone, job, jobHoursPerDay, injuries, nociveSubstances, suplements, rest, nightWakeUps, sleepEnvironment, alergies, carbohydratesFeeling, prevTrainings, objectives, availability, numTrainingDays, squat, benchPress, deadweight, height, fat, kcal, proteins, G, water) VALUES ("${date}", "${firstname}", "${lastname}", "${age}", "${email}", "${phone}", "${job}", "${jobHoursPerDay}", "${injuries}", "${nociveSubstances}", "${suplements}", "${rest}", "${nightWakeUps}", "${sleepEnvironment}", "${alergies}", "${carbohydratesFeeling}", "${prevTrainings}", "${objectives}", "${availability}", "${numTrainingDays}", "${squat}", "${benchPress}", "${deadweight}", "${height}", "${fat}", "${kcal}", "${proteins}", "${G}", "${water}");`
+		`INSERT INTO Profiles (date, firstname, lastname, age, email, phone, job, jobHoursPerDay, injuries, nociveSubstances, suplements, rest, nightWakeUps, sleepEnvironment, alergies, carbohydratesFeeling, prevTrainings, objectives, availability, numTrainingDays, squat, benchPress, deadweight, height, fat, kcal, proteins, G, water) VALUES ("${date}", "${firstname}", "${lastname}", "${age}", "${email}", "${phone}", "${job}", "${jobHoursPerDay}", "${injuries}", "${nociveSubstances}", "${suplements}", "${rest}", "${nightWakeUps}", "${sleepEnvironment}", "${alergies}", "${carbohydratesFeeling}", "${prevTrainings}", "${objectives}", "${availability}", "${numTrainingDays}", "${squat}", "${benchPress}", "${deadweight}", "${height}", "${fat}", "${kcal}", "${proteins}", "${G}", "${ch}", "${water}");`
 	)
 		.then(() => {
 			res.send({ message: "The form has been sent!" });

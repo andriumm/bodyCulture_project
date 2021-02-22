@@ -4,21 +4,10 @@ html {
 	font-family: "Montserrat", sans-serif;
 }
 
-#logo {
-	height: 8vw;
-	width: auto;
-	display: inline-flex;
-	margin-top: 2.5vw;
-	margin-bottom: 0em;
-	float: left;
-	margin-left: 2vw;
-}
-
 #title {
 	font-size: 4vw;
 	letter-spacing: 0.5vw;
 	display: inline-flex;
-	padding-right: 2em;
 	text-transform: uppercase;
 	justify-content: flex-start;
 	margin-top: 4vw;

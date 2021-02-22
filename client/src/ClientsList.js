@@ -43,19 +43,19 @@ export default function ClientsList() {
 		clearUpdates();
 		clearSelectedUpdate();
 	};
-	console.log("this is the ViewClient", viewClient);
+	//console.log("this is the ViewClient", viewClient);
 
 	//if you click on Updates history, the history of profiles will be listed
 	const displayClientUpdates = async (id) => {
 		try {
 			const response = await axios.get(`/updates/${id}`);
-			console.log("Response ClientUpdates:", response.data);
+			//console.log("Response ClientUpdates:", response.data);
 			setViewUpdates(response.data);
 		} catch (error) {
 			console.log(error);
 		}
 	};
-	console.log("This is the viewUpdates:", viewUpdates);
+	//console.log("This is the viewUpdates:", viewUpdates);
 
 	//if you click on one of the updates, all the info of those udpdate will be displayed.
 	const showSelectedUpdate = async (id) => {
@@ -63,9 +63,9 @@ export default function ClientsList() {
 			return update.id === id;
 		});
 		try {
-			const response = await axios.get(`/updates/${viewUpdates[i]}`);
-			console.log("i:", i, "viewupdates[i]: ", viewUpdates[i]);
-			console.log("Response ClientUpdates:", response);
+			const response = await axios.get(`/updates/${i}`);
+			//console.log("i:", i, "viewupdates[i]: ", viewUpdates[i]);
+			//console.log("Response ClientUpdates:", response);
 			setSelectedUpdate(viewUpdates[i]);
 		} catch (error) {
 			console.log(error);
@@ -86,123 +86,256 @@ export default function ClientsList() {
 
 	return (
 		<div>
-			<h5 className="text-center mb-4">
-				Click on the name whose info you'd like to check
-			</h5>
-			<div className="container">
-				{clients.length ? (
-					<div>
-						<ul>
-							{clients.map((client) => (
-								<li key={client.id}>
-									<span onClick={() => displayProfile(client.id)}>
-										<h6 className="d-inline mx-2">{client.id}</h6>
-										<h6 className="d-inline">
-											{client.firstname} {client.lastname}
-										</h6>
-									</span>
-								</li>
-							))}
-						</ul>
+			<div className="container text-center">
+				<div className="row">
+					<div className="col-4 mt-4 me-3">
+						<div>
+							{clients.length ? (
+								<div className="col">
+									<ul style={{ width: "30vw" }}>
+										{clients.map((client) => (
+											<li
+												key={client.id}
+												className="list-group-item badge bg-light text-wrap text-dark d-flex justify-content-center d-flex w-100 justify-content-between my-1"
+												style={{ width: "11vw" }}
+											>
+												<span onClick={() => displayProfile(client.id)}>
+													<h6 className="d-inline mx-2 badge bg-dark">
+														id {client.id}
+													</h6>
+													<h6 className="d-inline">
+														{client.firstname} {client.lastname}
+													</h6>
+												</span>
+											</li>
+										))}
+									</ul>
+								</div>
+							) : null}
+						</div>
 					</div>
-				) : null}
-			</div>
-			{viewClient.id && (
-				<div className="container">
-					<span>
-						<h3>
-							{viewClient.firstname} {viewClient.lastname}
-						</h3>
-					</span>
-					<div>
-						<button onClick={() => displayClientUpdates(viewClient.id)}>
-							Updates History
-						</button>
-						<button onClick={() => deleteAllClientInfo(viewClient.id)}>
-							Delete client
-						</button>
-					</div>
-					<div>
-						{viewUpdates.length ? (
+					<div className="col">
+						{viewClient.id && (
 							<div>
-								<ul>
-									{viewUpdates.map((update) => (
-										<li
-											key={update.id}
-											onClick={() => showSelectedUpdate(update.id)}
+								<div className="ms-4 my-4 text-start">
+									<span>
+										<h3 className="mb-3">
+											{viewClient.firstname} {viewClient.lastname}
+										</h3>
+									</span>
+									<div className="mb-4">
+										<button
+											onClick={() => displayClientUpdates(viewClient.id)}
+											className=" ms-4 me-1 btn btn-light btn-sm fw-bold"
 										>
-											{update.date}
-										</li>
-									))}{" "}
-								</ul>
+											Updates History
+										</button>
+										<button
+											onClick={() => deleteAllClientInfo(viewClient.id)}
+											className="btn btn-danger btn-sm fw-bold"
+										>
+											Delete
+										</button>
+									</div>
+									<div className="bg-light  ms-3">
+										<h6 className="text-dark d-inline-flex">Phone:</h6>{" "}
+										<span className="text-dark d-inline-flex  me-4">
+											{viewClient.phone}
+										</span>
+										<h6 className="text-dark d-inline-flex">Email:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.email}
+										</span>
+										<h6 className="text-dark d-inline-flex">Year of birth:</h6>{" "}
+										<span className="text-dark d-inline-flex">
+											{viewClient.age}
+										</span>
+										<br></br>
+										<h6 className="text-dark d-inline-flex">Job:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.job}
+										</span>
+										<h6 className="text-dark d-inline-flex">Job h/day:</h6>{" "}
+										<span className="text-dark d-inline-flex">
+											{viewClient.jobHoursPerDay}
+										</span>
+										<br></br>
+										<h6 className="text-dark d-inline-flex">Injuries:</h6>{" "}
+										<span className="text-dark d-inline-flex">
+											{viewClient.injuries}
+										</span>
+										<br />
+										<h6 className="text-dark d-inline-flex">
+											NocieveSubstances:
+										</h6>{" "}
+										<span className="text-dark d-inline-flex">
+											{viewClient.nociveSubstances}
+										</span>
+										<br />
+										<h6 className="text-dark d-inline-flex">Rest:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.rest}
+										</span>
+										<h6 className="text-dark d-inline-flex">
+											Sleep Environment:
+										</h6>{" "}
+										<span className="text-dark d-inline-flex">
+											{viewClient.sleepEnvironment}
+										</span>
+										<br />
+										<h6 className="text-dark d-inline-flex">Alegries:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.alergies}
+										</span>
+										<h6 className="text-dark d-inline-flex">
+											Carbohydrates Feeling:
+										</h6>{" "}
+										<span className="text-dark d-inline-flex">
+											{viewClient.carbohydratesFeeling}
+										</span>
+										<br />
+										<h6 className="text-dark d-inline-flex">
+											Previous Trainings:
+										</h6>{" "}
+										<span className="text-dark d-inline-flex">
+											{viewClient.prevTrainings}
+										</span>
+										<br />
+										<h6 className="text-dark d-inline-flex">
+											Objectives:
+										</h6>{" "}
+										<span className="text-dark d-inline-flex">
+											{viewClient.objectives}
+										</span>
+										<br />
+										<h6 className="text-dark d-inline-flex">
+											Availability:
+										</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.availability}
+										</span>
+										<h6 className="text-dark d-inline-flex">
+											Number of training days:
+										</h6>{" "}
+										<span className="text-dark d-inline-flex">
+											{viewClient.numTrainingDays}
+										</span>
+										<br />
+										<h6 className="text-dark d-inline-flex">Squat:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.squat}
+										</span>
+										<h6 className="text-dark d-inline-flex">Bench press:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.benchPress}
+										</span>
+										<h6 className="text-dark d-inline-flex">Deadweight:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.deadweight}
+										</span>{" "}
+										<br />
+										<h6 className="text-dark d-inline-flex">Height:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.height}
+										</span>
+										<h6 className="text-dark d-inline-flex">Fat:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.fat}
+										</span>
+										<br />
+										<h6 className="text-dark d-inline-flex">Kcal:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.kcal}
+										</span>
+										<h6 className="text-dark d-inline-flex">Proteins:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.proteins}
+										</span>
+										<h6 className="text-dark d-inline-flex">G:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.g}
+										</span>
+										<h6 className="text-dark d-inline-flex">Ch:</h6>{" "}
+										<span className="text-dark d-inline-flex me-4">
+											{viewClient.ch}
+										</span>
+										<h6 className="text-dark d-inline-flex">Water:</h6>{" "}
+										<span className="text-dark d-inline-flex">
+											{viewClient.water}
+										</span>
+									</div>
+									<div className="container mt-4">
+										{viewUpdates.length ? (
+											<div>
+												<ul className=" ">
+													{viewUpdates.map((update) => (
+														<li
+															key={update.id}
+															onClick={() => showSelectedUpdate(update.id)}
+															className="nav fw-bold"
+														>
+															- {update.date.substring(0, 10)}
+														</li>
+													))}{" "}
+												</ul>
+											</div>
+										) : null}
+									</div>
+								</div>
 							</div>
-						) : null}
+						)}
 					</div>
 				</div>
-			)}
+			</div>
+
 			{selectedUpdate ? (
-				<div>
-					<h3>Update from {selectedUpdate.date}</h3>
-					<div>here I'll display all the information :)</div>
+				<div className="my-4 mx-4">
+					<h4 className="my-4">
+						Update from {selectedUpdate.date.substring(0, 10)}
+					</h4>
+					<div>
+						<table className="table table-light table-striped table-bordered">
+							<thead>
+								<tr>
+									<th scope="col">Date</th>
+									<th scope="col">Weight</th>
+									<th scope="col">Arm</th>
+									<th scope="col">Weist</th>
+									<th scope="col">Leg</th>
+									<th scope="col">Stress Level</th>
+									<th scope="col">Sleep hours</th>
+									<th scope="col">Steps</th>
+									<th scope="col">Diet Compliment</th>
+									<th scope="col">Feelings</th>
+									<th scope="col">Training Summary</th>
+									<th scope="col">Front</th>
+									<th scope="col">Back</th>
+									<th scope="col">Side</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">{selectedUpdate.date.substring(0, 10)}</th>
+									<td>{selectedUpdate.weight}</td>
+									<td>{selectedUpdate.arm}</td>
+									<td>{selectedUpdate.weist}</td>
+									<td>{selectedUpdate.leg}</td>
+									<td>{selectedUpdate.stressLevel}</td>
+									<td>{selectedUpdate.sleepHours}</td>
+									<td>{selectedUpdate.steps}</td>
+									<td>{selectedUpdate.dietCompliment}</td>
+									<td>{selectedUpdate.feelings}</td>
+									<td>{selectedUpdate.trainingsSummary}</td>
+									{/* Meanwhile I haven't implemented the pictures uploading functionality, I've filled the 3 last columns with an empty string */}
+									<td>{""}</td>
+									<td>{""}</td>
+									<td>{""}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			) : null}
 		</div>
 	);
-}
-
-{
-	/* <ul>
-							
-							{Object.keys(viewClient).map(function (key) {
-								return <li value={key}>{viewClient[key]}</li>;
-							})}
-							{/* </li> 
-						</ul>
-						<ul>
-							<li key={viewClient.id}>
-								{Object.values(viewClient).map((value) => {
-									return <li value={value}>{viewClient.key}</li>;
-								})}
-							</li>
-						</ul> */
-}
-
-{
-	/* <table>
-							<thead>
-								<tr>
-									<th scope="col">Info</th>
-								</tr>
-							</thead>
-							<tbody>
-								{/* {Object.keys(viewClient).map((key) => {
-									return <tr value={key}>{viewClient[key]}</tr>;
-								})} 
-							</tbody>
-						</table>
-						<table>
-							<thead>
-								<tr>
-									<th scope="col">Answers</th>
-								</tr>
-							</thead>
-							<tbody>
-								{/* {Object.values(viewClient).map((value) => {
-									return <tr value={value}>{viewClient[`${key}`]}</tr>;
-								})} 
-							</tbody>
-						</table> */
-}
-
-{
-	/* <div>{viewClient.id && <div></div>}</div> */
-}
-{
-	/* {Object.entries(viewClient).map((key) => {
-				return (
-					<li>
-						{viewClient[key]}: {viewClient.key}
-					</li>
-				);
-			})} */
 }

@@ -18,15 +18,22 @@ function App() {
 	return (
 		<Router className="Router">
 			<div className="App">
-				<img
-					src={"./BODYCULTURE LOGO_NEGRO-01.png"}
-					alt="logo"
-					//className="img-fluid mx-4 my-4"
-					//id="logo"
-				></img>
-				<Link to="/" className="nav-link text-center text-light">
-					<h1 id="title">BodyCultureBcn</h1>
-				</Link>
+				<div className="row-g-0">
+					<div className="col-6 col-md-4 d-inline-flex ">
+						<img
+							src={"./bcb_logo.png"}
+							alt="logo"
+							style={{ maxWidth: "10vw" }}
+							className="ms-4 mt-4"
+						></img>
+					</div>
+					<div className=" col-sm-6 col-md-8 d-inline-flex">
+						<NavLink to="/" className="nav-link text-light">
+							<h1 id="title">BodyCultureBcn</h1>
+						</NavLink>
+					</div>
+				</div>
+
 				<nav id="navbar" className="mt-5">
 					<ul className="nav justify-content-center fw-bold">
 						<li className="mx-4 text-decoration-none">
