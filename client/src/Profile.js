@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+//const axios = require("axios").default;
 
 export default function Profile() {
 	// create a use state for each field
@@ -52,7 +53,8 @@ export default function Profile() {
 	};
 
 	//this function is triggered when we submit the form with the button enviar. (that's why it is called in the handleSubmit function)
-	const addProfile = () => {
+	//pending to refactor this function, I tried, but I was messing up with something
+	const addProfile = async () => {
 		fetch("/profiles", {
 			method: "POST",
 			headers: {
@@ -65,6 +67,12 @@ export default function Profile() {
 			.catch((error) => {
 				console.log(error);
 			});
+		// try {
+		// 	await axios.post(`/profiles`);
+		// 	console.log({ message: "Your information has been sent!" });
+		// } catch (error) {
+		// 	console.error(error);
+		// }
 	};
 	return (
 		<div className="mx-4">

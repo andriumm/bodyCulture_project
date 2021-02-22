@@ -21,7 +21,7 @@ function App() {
 				<div className="row-g-0">
 					<div className="col-6 col-md-4 d-inline-flex ">
 						<img
-							src={"./bcb_logo.png"}
+							src={"/bcbLogo.png"}
 							alt="logo"
 							style={{ maxWidth: "10vw" }}
 							className="ms-4 mt-4"

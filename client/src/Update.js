@@ -67,6 +67,7 @@ export default function Update() {
 			<form
 				onSubmit={handleSubmit}
 				className="text-start mb-4 mx-4 form-control"
+				style={{ width: "800px" }}
 			>
 				<label htmlFor="dateInput" className="my-3 mx-4 d-block">
 					<p>
@@ -278,7 +279,7 @@ export default function Update() {
 						className="form-control"
 						style={{ width: "20vw" }}
 					></input>
-					<button>Upload</button>
+					<button className="btn btn-dark mt-1">Upload</button>
 				</label>
 				<label htmlFor="picBackInput" className="my-3 mx-4 d-block">
 					<p>
@@ -294,7 +295,7 @@ export default function Update() {
 						className="form-control"
 						style={{ width: "20vw" }}
 					></input>
-					<button>Upload</button>
+					<button className="btn btn-dark mt-1">Upload</button>
 				</label>
 				<label htmlFor="picSideInput" className="my-3 mx-4 d-block">
 					<p>
@@ -310,7 +311,7 @@ export default function Update() {
 						className="form-control"
 						style={{ width: "20vw" }}
 					></input>
-					<button>Upload</button>
+					<button className="btn btn-dark mt-1 ">Upload</button>
 				</label>
 				<div className="text-center">
 					<button type="submit" className="btn btn-dark btn-lg my-3">
