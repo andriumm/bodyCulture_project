@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Profile from "./Profile";
+//import Profile from "./Profile";
 const axios = require("axios");
 
 export default function ClientsList() {
@@ -63,7 +63,7 @@ export default function ClientsList() {
 			return update.id === id;
 		});
 		try {
-			const response = await axios.get(`/updates/${i}`);
+			await axios.get(`/updates/${i}`);
 			//console.log("i:", i, "viewupdates[i]: ", viewUpdates[i]);
 			//console.log("Response ClientUpdates:", response);
 			setSelectedUpdate(viewUpdates[i]);

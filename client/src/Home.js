@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function Home() {
 	return (
@@ -14,6 +13,7 @@ export default function Home() {
 					<a
 						href="https://www.instagram.com/bodyculturebcn/"
 						target="_blank"
+						rel="noreferrer"
 						className="text-decoration-none fs-1 text-light"
 					>
 						@bodyculturebcn

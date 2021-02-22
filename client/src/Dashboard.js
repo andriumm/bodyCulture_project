@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import ClientsList from "./ClientsList";
-const axios = require("axios");
+//const axios = require("axios");
 
 //in here the admin, can check the data the clients have sent through the forms
 export default function Dashboard() {
