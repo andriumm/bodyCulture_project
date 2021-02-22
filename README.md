@@ -28,6 +28,11 @@ DB_PASS=YOURPASSWORD
 - In another terminal, do ```cd client``` and ```run npm start``` to start the client in development mode with hot reloading in port 3000.
 
 ### Stack
-- JavaScript, React.js, Express.js, axios
+- JavaScript, React.js, Express.js
+- Other libraries: axios
+
+### Database schema
 
  _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
+ 
+ 
