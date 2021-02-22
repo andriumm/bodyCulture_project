@@ -1,5 +1,6 @@
 # bodyCulture_project
-CodeOp 1st project
+CodeOp 1st project. 
+WebApp in which clients can upload and send a couple of forms that a personal trainer will use to personalize the trainings for each client. 
 
 ## SetUp
 
@@ -35,7 +36,7 @@ DB_PASS=YOURPASSWORD
 ![Db Schema](client/public/databaseSchema.png)
 
 ### Table endpoints
-![Endpoints](client/public/URI bodyCultureBcn.odt)
+![endpoints](client/public/Endpoints.png)
 
  _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
  
