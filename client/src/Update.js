@@ -66,8 +66,8 @@ export default function Update() {
 			</p>
 			<form
 				onSubmit={handleSubmit}
-				className="text-start mb-4 mx-4 form-control"
-				style={{ width: "800px" }}
+				className="text-start mb-4 mx-4 form-control justify-content-center"
+				style={{ width: "90vw" }}
 			>
 				<label htmlFor="dateInput" className="my-3 mx-4 d-block">
 					<p>

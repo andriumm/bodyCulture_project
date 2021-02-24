@@ -34,7 +34,7 @@ function App() {
 					</div>
 				</div>
 
-				<nav id="navbar" className="mt-5">
+				<nav id="navbar" className="mt-5 nav-pills nav-stacked hidden-xs">
 					<ul className="nav justify-content-center fw-bold">
 						<li className="mx-4 text-decoration-none">
 							<Link to="/" className="text-decoration-none text-light">

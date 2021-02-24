@@ -86,6 +86,7 @@ export default function Profile() {
 			<form
 				onSubmit={handleSubmit}
 				className="text-start mb-4 mx-4 form-control"
+				style={{ width: "90vw" }}
 			>
 				<h5 className="my-4 fw-bolder">
 					CONTACT DETAILS
