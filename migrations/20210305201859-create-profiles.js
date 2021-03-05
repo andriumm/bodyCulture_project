@@ -22,7 +22,7 @@ module.exports = {
 			email: { type: Sequelize.STRING },
 			phone: { type: Sequelize.INTEGER },
 			job: { type: Sequelize.STRING },
-			jobHoursPerDay: { type: Sequelize.STRING },
+			jobHoursPerDay: { type: Sequelize.INTEGER },
 			injuries: { type: Sequelize.STRING },
 			nociveSubstances: { type: Sequelize.STRING },
 			suplements: { type: Sequelize.STRING },
