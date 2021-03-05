@@ -19,5 +19,7 @@
 		"nodemon": "^2.0.7",
 		"sequelize": "^6.5.0"
 	},
-	"migrate": "node model/database.js"
+	"devDependencies": {
+		"sequelize-cli": "^6.2.0"
+	}
 }
