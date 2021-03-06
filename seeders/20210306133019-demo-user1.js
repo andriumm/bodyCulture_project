@@ -8,8 +8,9 @@ module.exports = {
 				{
 					firstname: "Michael",
 					lastname: "Jordan",
-					email: "m.jordan@gmail.com",
 					phone: "612345678",
+					email: "m.jordan@gmail.com",
+					password: "michael",
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},
