@@ -70,4 +70,38 @@ router.get("/:id", async function (req, res, next) {
 	}
 });
 
+/* UPDATE USER INFORMATION - PUT one user. */
+router.put("/:id", async function (req, res, next) {
+	const { firstname, lastname, phone, email, password } = req.body;
+	const { id } = req.params;
+	try {
+		await models.Users.update(
+			{ firstname, lastname, phone, email, password },
+			{
+				where: {
+					id,
+				},
+			}
+		);
+		res.send({ message: "User updated succesfully!" });
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
+/* DELETE a user */
+router.delete("/:id", async function (req, res, next) {
+	const { id } = req.params;
+	try {
+		await models.Users.destroy({
+			where: {
+				id,
+			},
+		});
+		res.send({ message: "User deleted!" });
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
 module.exports = router;
