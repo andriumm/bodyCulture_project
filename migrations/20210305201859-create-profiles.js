@@ -12,15 +12,9 @@ module.exports = {
 				allowNull: false,
 				type: Sequelize.STRING,
 			},
-			lastname: {
-				allowNull: false,
-				type: Sequelize.STRING,
-			},
 			age: {
 				type: Sequelize.INTEGER,
 			},
-			email: { type: Sequelize.STRING },
-			phone: { type: Sequelize.INTEGER },
 			job: { type: Sequelize.STRING },
 			jobHoursPerDay: { type: Sequelize.INTEGER },
 			injuries: { type: Sequelize.STRING },
