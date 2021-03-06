@@ -12,7 +12,7 @@ module.exports = {
 				allowNull: false,
 				type: Sequelize.INTEGER,
 			},
-			age: {
+			birth: {
 				type: Sequelize.INTEGER,
 			},
 			job: { type: Sequelize.STRING },
