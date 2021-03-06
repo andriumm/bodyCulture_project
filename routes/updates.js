@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
+const models = require("../models");
 
 // // // GET users updates list //CHECKED
 router.get("/", function (req, res, next) {
