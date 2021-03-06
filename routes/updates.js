@@ -1,7 +1,12 @@
 var express = require("express");
 var router = express.Router();
-const db = require("../model/helper");
+//const db = require("../model/helper");
 const models = require("../models");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+const supersecret = process.env.SUPER_SECRET;
 
 // // // GET users updates list //CHECKED
 router.get("/", function (req, res, next) {

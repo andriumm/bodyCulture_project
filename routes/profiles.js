@@ -1,12 +1,95 @@
 var express = require("express");
 var router = express.Router();
-const db = require("../model/helper");
+//const db = require("../model/helper");
 const models = require("../models");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+const bcrypt = require("bcrypt");
+const userShouldBeLoggedIn = require("../guards/userShouldBeLoggedIn");
+const saltRounds = 10;
+const supersecret = process.env.SUPER_SECRET;
 
-// /* GET users listing. */
-// router.get("/", function (req, res, next) {
-// 	res.send("respond with a resource");
-// });
+/* UPLOAD PROFILE => POST profile */
+router.post("/:id", userShouldBeLoggedIn, async function (req, res, next) {
+	const { user_id } = req.params;
+	const {
+		birth,
+		job,
+		jobHoursPerDay,
+		injuries,
+		nociveSubstances,
+		suplements,
+		rest,
+		nightWakeUps,
+		sleepEnvironment,
+		alergies,
+		carbohydratesFeeling,
+		prevTrainings,
+		objectives,
+		availability,
+		numTrainingDays,
+		squat,
+		benchPress,
+		deadweight,
+		height,
+		fat,
+		kcal,
+		proteins,
+		g,
+		ch,
+		water,
+	} = req.body;
+	try {
+		await models.Users.create(
+			{
+				user_id,
+				birth,
+				job,
+				jobHoursPerDay,
+				injuries,
+				nociveSubstances,
+				suplements,
+				rest,
+				nightWakeUps,
+				sleepEnvironment,
+				alergies,
+				carbohydratesFeeling,
+				prevTrainings,
+				objectives,
+				availability,
+				numTrainingDays,
+				squat,
+				benchPress,
+				deadweight,
+				height,
+				fat,
+				kcal,
+				proteins,
+				g,
+				ch,
+				water,
+			},
+			{
+				where: {
+					id,
+				},
+			}
+		);
+		res.send({ message: "Your profile has been uploaded succesfully!" });
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
+/* LIST OF PROFILES => GET users */
+router.get("/", async function (req, res, next) {
+	try {
+		const users = await models.Users.findAll();
+		res.send(users);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
 
 // // // GET users list //CHECKED
 router.get("/", function (req, res, next) {

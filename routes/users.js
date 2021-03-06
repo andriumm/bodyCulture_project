@@ -5,6 +5,7 @@ const models = require("../models");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
+const userShouldBeLoggedIn = require("../guards/userShouldBeLoggedIn");
 const saltRounds = 10;
 const supersecret = process.env.SUPER_SECRET;
 
@@ -46,7 +47,7 @@ router.post("/login", async function (req, res, next) {
 });
 
 /* LIST OF USERS => GET users */
-router.get("/", async function (req, res, next) {
+router.get("/", userShouldBeLoggedIn, async function (req, res, next) {
 	try {
 		const users = await models.Users.findAll();
 		res.send(users);
@@ -56,7 +57,7 @@ router.get("/", async function (req, res, next) {
 });
 
 /* GET 1 USER  */
-router.get("/:id", async function (req, res, next) {
+router.get("/:id", userShouldBeLoggedIn, async function (req, res, next) {
 	const { id } = req.params;
 	try {
 		const users = await models.Users.findOne({
@@ -71,7 +72,7 @@ router.get("/:id", async function (req, res, next) {
 });
 
 /* UPDATE USER INFORMATION - PUT one user. */
-router.put("/:id", async function (req, res, next) {
+router.put("/:id", userShouldBeLoggedIn, async function (req, res, next) {
 	const { firstname, lastname, phone, email, password } = req.body;
 	const { id } = req.params;
 	try {
@@ -90,7 +91,7 @@ router.put("/:id", async function (req, res, next) {
 });
 
 /* DELETE a user */
-router.delete("/:id", async function (req, res, next) {
+router.delete("/:id", userShouldBeLoggedIn, async function (req, res, next) {
 	const { id } = req.params;
 	try {
 		await models.Users.destroy({
