@@ -23,11 +23,6 @@ router.post("/register", async function (req, res, next) {
 	} catch (error) {
 		res.status(500).send(error);
 	}
-
-	// .then(() => )
-	// .catch((error) => {
-	// 	res.status(500).send(error);
-	// });
 });
 
 /* LOGIN => POST user  */

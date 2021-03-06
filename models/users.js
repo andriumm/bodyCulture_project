@@ -1,5 +1,8 @@
 "use strict";
 const { Model } = require("sequelize");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+const supersecret = process.env.SUPER_SECRET;
 module.exports = (sequelize, DataTypes) => {
 	class Users extends Model {
 		static associate(models) {
@@ -16,10 +19,10 @@ module.exports = (sequelize, DataTypes) => {
 			password: {
 				type: DataTypes.STRING,
 				allowNull: false,
-				// set(value) {
-				// 	const hash = bcrypt.hashSync(value, saltRounds);
-				// 	this.setDataValue("password", hash);
-				// },
+				set(value) {
+					const hash = bcrypt.hashSync(value, saltRounds);
+					this.setDataValue("password", hash);
+				},
 			},
 		},
 		{
