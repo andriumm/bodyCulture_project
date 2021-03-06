@@ -21,6 +21,7 @@
 		"sequelize": "^6.5.0"
 	},
 	"devDependencies": {
-		"sequelize-cli": "^6.2.0"
+		"sequelize-cli": "^6.2.0",
+		"sequelize-mig": "^3.0.1"
 	}
 }
