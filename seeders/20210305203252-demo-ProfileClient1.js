@@ -6,11 +6,7 @@ module.exports = {
 			"Profiles",
 			[
 				{
-					firstname: "Michael",
-					lastname: "Jordan",
 					birth: "1963",
-					email: "m.jordan@gmail.com",
-					phone: "612345678",
 					job: "Basketball Player",
 					jobHoursPerDay: 8,
 					injuries: "Knee",

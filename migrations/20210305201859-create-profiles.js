@@ -8,9 +8,9 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 			},
-			firstname: {
+			user_id: {
 				allowNull: false,
-				type: Sequelize.STRING,
+				type: Sequelize.INTEGER,
 			},
 			age: {
 				type: Sequelize.INTEGER,

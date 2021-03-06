@@ -8,6 +8,10 @@ module.exports = {
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 			},
+			user_id: {
+				allowNull: false,
+				type: Sequelize.INTEGER,
+			},
 			profile_id: {
 				allowNull: false,
 				type: Sequelize.INTEGER,
