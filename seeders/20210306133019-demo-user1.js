@@ -10,6 +10,8 @@ module.exports = {
 					lastname: "Jordan",
 					email: "m.jordan@gmail.com",
 					phone: "612345678",
+					createdAt: new Date(),
+					updatedAt: new Date(),
 				},
 			],
 			{}

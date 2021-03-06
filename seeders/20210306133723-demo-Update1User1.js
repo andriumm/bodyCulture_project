@@ -6,6 +6,7 @@ module.exports = {
 			"Updates",
 			[
 				{
+					user_id: 1,
 					profile_id: 1,
 					weight: 100,
 					arm: 28,
