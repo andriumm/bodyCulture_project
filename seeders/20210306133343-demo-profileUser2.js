@@ -1,4 +1,4 @@
-"use strict";
+("use strict");
 
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
@@ -6,6 +6,7 @@ module.exports = {
 			"Profiles",
 			[
 				{
+					user_id: 2,
 					birth: "1986",
 					job: "Singer",
 					jobHoursPerDay: 7,

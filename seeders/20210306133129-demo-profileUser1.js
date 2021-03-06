@@ -6,6 +6,7 @@ module.exports = {
 			"Profiles",
 			[
 				{
+					user_id: 1,
 					birth: "1963",
 					job: "Basketball Player",
 					jobHoursPerDay: 8,
@@ -13,7 +14,7 @@ module.exports = {
 					nociveSubstances: "None",
 					suplements: "Proteins",
 					rest: "Good",
-					nightWakeUps: "2-3",
+					nightWakeUps: 2,
 					sleepEnvironment: "Quiet",
 					alergies: "None",
 					carbohydratesFeeling: "Sleepy",

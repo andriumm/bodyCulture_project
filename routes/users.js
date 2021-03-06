@@ -12,7 +12,7 @@ const supersecret = process.env.SUPER_SECRET;
 router.post("/register", async function (req, res, next) {
 	const { firstname, lastname, phone, email, password } = req.body;
 	try {
-		const user = await models.Users.create({
+		await models.Users.create({
 			firstname,
 			lastname,
 			phone,
