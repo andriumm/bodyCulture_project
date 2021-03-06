@@ -45,4 +45,14 @@ router.post("/login", async function (req, res, next) {
 	}
 });
 
+/* LIST OF USERS => GET users */
+router.get("/", async function (req, res, next) {
+	try {
+		const users = await models.Users.findAll();
+		res.send(users);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
 module.exports = router;
