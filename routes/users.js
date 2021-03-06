@@ -55,4 +55,19 @@ router.get("/", async function (req, res, next) {
 	}
 });
 
+/* GET 1 USER  */
+router.get("/:id", async function (req, res, next) {
+	const { id } = req.params;
+	try {
+		const users = await models.Users.findOne({
+			where: {
+				id,
+			},
+		});
+		res.send(users);
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
 module.exports = router;
