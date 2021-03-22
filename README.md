@@ -48,7 +48,7 @@ SUPER_SECRET = YOURSECRET;
 
 ### Table endpoints (needs to be updated)
 
-![endpoints](client/public/Endpoints.png)
+[endpoints](client/public/Endpoints.png)
 
 ### Future features
 
