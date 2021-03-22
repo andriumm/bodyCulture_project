@@ -46,7 +46,7 @@ SUPER_SECRET = YOURSECRET;
 
 ![Db Schema](client/public/db_schema.png)
 
-### Table endpoints
+### Table endpoints (needs to be updated)
 
 ![endpoints](client/public/Endpoints.png)
 
