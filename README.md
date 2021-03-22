@@ -1,7 +1,8 @@
 # bodyCulture_project
 
-CodeOp 1st project.
-WebApp in which clients can upload and send a couple of forms that a personal trainer will use to personalize the trainings for each client.
+As you might have seen, the name of this repository is almost the same as the BodyCultureBcn one (not finished). BodyCultureBcn was only with HTML5 and CSS. With the current repository shows the difference between my first approach (before the bootcamp), and what I'm currently learning through this second iteration that was started in the CodeOp bootcamp and still working on it (refactoring and adding new features) in order to make it a real webApp. 
+
+The main purporse of this WebApp is that the clients of a personal trainer can upload and send a couple of forms (including pictures) that later on will be used to personalize the trainings for each client and to do the follow up of them.
 
 ## SetUp
 
@@ -39,7 +40,7 @@ SUPER_SECRET = YOURSECRET;
 ### Stack
 
 - JavaScript, React.js, Express.js, mySQL
-- Other libraries: axios, sequelize
+- Other libraries: axios, Sequelize
 
 ### Database schema
 
@@ -48,5 +49,11 @@ SUPER_SECRET = YOURSECRET;
 ### Table endpoints
 
 ![endpoints](client/public/Endpoints.png)
+
+### Future features
+
+- Authentication
+- Uploading images
+- Style improvements (making it responsive)
 
 _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
