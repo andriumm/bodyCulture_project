@@ -55,5 +55,7 @@ SUPER_SECRET = YOURSECRET;
 - Authentication
 - Uploading images
 - Style improvements (making it responsive)
+- Adding email notifications (admin is notified when client uploads an update)
+
 
 _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
